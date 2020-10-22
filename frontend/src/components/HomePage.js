@@ -32,7 +32,7 @@ const HomePage = () => {
         <Menu>
           {artists.map((artist) => (
             <li>
-              <Link to={`/music/artist/${artist}`}>{artist}</Link>
+              <Link to={`/music/artist/${artist}`} key={artist} >{artist}</Link>
             </li>
           ))}
         </Menu>

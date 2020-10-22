@@ -28,8 +28,8 @@ express()
   })
 
   .get('/top50/song/:rank', (req, res) => {
-    const songRank = req.params;
-    const rankNum = Number(songRank.rank);
+    const songRank = req.params.rank;
+    const rankNum = Number(songRank);
     const data = top50.find(song => song.rank === rankNum);
     if (!data) {
       res.status(400).json({
@@ -45,10 +45,9 @@ express()
   })
 
   .get('/top50/artist/:artist', (req, res) => {
-    const artistParams = req.params;
-    const searchedArtist = artistParams.artist.toLowerCase();
+    const searchedArtist = req.params.artist;
     const data = top50.filter((song) => 
-      song.artist.toLowerCase() === searchedArtist
+      song.artist.toLowerCase() === searchedArtist.toLowerCase()
     );
     if (data.length == 0) {
       res.status(400).json({
