@@ -30,7 +30,9 @@ express()
   .get('/top50/song/:rank', (req, res) => {
     const songRank = req.params.rank;
     const rankNum = Number(songRank);
-    const data = top50.find(song => song.rank === rankNum);
+    const data = top50.find(song => {
+      return song.rank === rankNum;
+    });
     if (!data) {
       res.status(400).json({
         status: 400, 
