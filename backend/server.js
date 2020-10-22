@@ -47,9 +47,8 @@ express()
   .get('/top50/artist/:artist', (req, res) => {
     const artistParams = req.params;
     const searchedArtist = artistParams.artist.toLowerCase();
-    // what to do with spaces, dashes..??
     const data = top50.filter((song) => 
-      song.artist.toLowerCase().includes(searchedArtist)
+      song.artist.toLowerCase() === searchedArtist
     );
     if (data.length == 0) {
       res.status(400).json({
